@@ -1,11 +1,12 @@
 name: Build and Deploy
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  # schedule:
-  #   - cron: '0 3 * * *'
+  schedule:
+    - cron: '0 3 * * *'
 
   repository_dispatch:
     types: [trigger-workflow]
@@ -46,8 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: innei-dev/shiroi
-          token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
+          repository: Innei/Shiro
           fetch-depth: 0
           lfs: true
 
@@ -82,8 +82,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: innei-dev/shiroi
-          token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
+          repository: Innei/Shiro
           fetch-depth: 0
           lfs: true
 
